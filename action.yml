@@ -12,9 +12,14 @@ inputs:
     description: 'GUT parameters (https://github.com/bitwes/Gut/wiki/Command-Line)'
     required: false
     default: -gdir=res://tests
+  working_dir:
+    description: Working Directory
+    required: false
+    default: '.'
 runs:
   using: 'docker'
   image: 'Dockerfile'
   args:
     - ${{ inputs.godot_version }}
     - ${{ inputs.gut_params }}
+    - ${{ inputs.working_dir }}

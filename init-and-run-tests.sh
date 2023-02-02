@@ -3,6 +3,7 @@ set -e
 
 GODOT_VERSION=$1
 GUT_PARAMS=$2
+WORKING_DIR=$3
 
 # # Download Godot
 wget https://downloads.tuxfamily.org/godotengine/${GODOT_VERSION}/Godot_v${GODOT_VERSION}-stable_linux_headless.64.zip
@@ -25,7 +26,7 @@ echo Running GUT tests using params:
 echo "  -> $GUT_PARAMS"
 
 TEMP_FILE=/tmp/gut.log
-/usr/local/bin/godot -d -s --path $PWD addons/gut/gut_cmdln.gd -gexit $GUT_PARAMS 2>&1 | tee $TEMP_FILE
+/usr/local/bin/godot -d -s --path $WORKING_DIR addons/gut/gut_cmdln.gd -gexit $GUT_PARAMS 2>&1 | tee $TEMP_FILE
 
 # Godot always exists with error 0, but we want this action to fail in case of errors
 if grep -q "No tests ran" "$TEMP_FILE";
