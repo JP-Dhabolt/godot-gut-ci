@@ -35,12 +35,11 @@ then
   exit 1
 fi
 
-if  grep -q "[Failed]:" "$TEMP_FILE"
+if  grep -q "All tests passed" "$TEMP_FILE"
 then
-  echo "One or more test have failed"
-  exit 1
+  echo "ALL GOOD :) :) :)"
+  exit 0
 fi
 
-echo "ALL GOOD :) :) :)"
-
-exit 0
+echo "One or more test have failed"
+exit 1
