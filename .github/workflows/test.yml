@@ -14,3 +14,4 @@ jobs:
         with:
           godot_version: 3.2.2
           gut_params: -gdir=res://tests/unit
+          working_dir: test-project/
